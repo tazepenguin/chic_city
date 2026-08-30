@@ -1,0 +1,135 @@
+::selection{ background:#D9A13B; color:#402412; }
+body{ -webkit-font-smoothing:antialiased;
+  background-color:#F4EAD8;
+  background-image: radial-gradient(rgba(122,74,42,.09) 1px, transparent 1.4px);
+  background-size: 22px 22px;
+}
+
+/* ── WOOD ── */
+.wood{
+  background-color:#7c4a26;
+  background-image:
+    radial-gradient(ellipse at 18% 8%, rgba(255,244,222,.10), transparent 55%),
+    radial-gradient(ellipse at 85% 92%, rgba(0,0,0,.20), transparent 55%),
+    repeating-linear-gradient(90deg, rgba(0,0,0,.05) 0 3px, transparent 3px 9px),
+    repeating-linear-gradient(0deg, rgba(0,0,0,.25) 0 2px, transparent 2px 92px),
+    linear-gradient(90deg,#8a5430,#7c4a26 30%,#86512c 55%,#754523 80%,#8a5430);
+  box-shadow: inset 0 3px 14px rgba(0,0,0,.5), inset 0 -3px 14px rgba(0,0,0,.4);
+}
+.wood-frame{ border:10px solid #5d3418; outline:3px solid #402412; box-shadow: 0 24px 60px -18px rgba(64,36,18,.55), inset 0 3px 14px rgba(0,0,0,.5); }
+.plank{
+  background: linear-gradient(180deg,#8a5430,#6f4222);
+  border:2px solid #402412; border-radius:6px;
+  box-shadow: 0 4px 0 #402412, 0 10px 18px -6px rgba(64,36,18,.5), inset 0 2px 6px rgba(255,244,222,.15);
+}
+.painted{ color:#F6EBD9; text-shadow: 0 2px 0 rgba(0,0,0,.35), 0 0 18px rgba(0,0,0,.15); }
+
+/* ── KRAFT PAPER / NOTES ── */
+.kraft{
+  background-color:#e6cfa6;
+  background-image: radial-gradient(rgba(122,74,42,.10) 1px, transparent 1.3px), linear-gradient(180deg, rgba(255,255,255,.35), transparent 30%);
+  background-size: 14px 14px, 100% 100%;
+  border:1px solid #c9a876;
+  box-shadow: 0 10px 22px -8px rgba(64,36,18,.4);
+}
+.tape::before{ content:''; position:absolute; top:-12px; left:50%; transform:translateX(-50%) rotate(-3deg);
+  width:86px; height:26px; background:rgba(233,220,180,.75); border:1px dashed rgba(122,74,42,.25); box-shadow:0 2px 4px rgba(64,36,18,.15); }
+.pin::before{ content:''; position:absolute; top:-9px; left:50%; transform:translateX(-50%);
+  width:16px; height:16px; border-radius:50%; background:radial-gradient(circle at 32% 30%, #f2b3a0, #b3402a 55%, #7c2417); box-shadow:0 3px 4px rgba(0,0,0,.4); }
+.nail{ width:15px; height:15px; border-radius:50%;
+  background:radial-gradient(circle at 32% 30%, #efe6d8, #9a9a92 45%, #4c4c46 78%);
+  box-shadow: 0 3px 4px rgba(0,0,0,.55); }
+
+/* ── SWAYING HANGERS ── */
+.hang{ --amp:2.2deg; --dur:6s; transform-origin:50% 0%; animation:sway var(--dur) ease-in-out infinite; will-change:transform; }
+@keyframes sway{ 0%,100%{ transform:rotate(var(--amp)); } 50%{ transform:rotate(calc(-1 * var(--amp))); } }
+article:hover .hang, .push:hover .hang{ --amp:4.6deg; }
+
+/* per-instance sway tuning (previously inline styles) */
+.hang-hero{ --amp:3deg; --dur:7s; }
+.hang-campaign{ --amp:3.4deg; --dur:6.4s; animation-delay:-2s; }
+.hang-story-a{ --amp:1.8deg; --dur:7.5s; }
+.hang-story-b{ --amp:2deg; --dur:6.8s; animation-delay:-3s; }
+.hang-modal{ --amp:2.4deg; --dur:6.5s; }
+.hang-cat-a{ --amp:2.2deg; --dur:6.6s; }
+.hang-cat-b{ --amp:2deg; --dur:5.9s; animation-delay:-1.6s; }
+.hang-cat-c{ --amp:2.4deg; --dur:7.1s; animation-delay:-3.2s; }
+.hang-cat-d{ --amp:1.9deg; --dur:6.3s; animation-delay:-4.4s; }
+
+/* varied sway rhythm across the hanging wall (previously JS inline styles) */
+#productGrid article:nth-child(4n+1) .hang{ --dur:5.4s; animation-delay:0s; }
+#productGrid article:nth-child(4n+2) .hang{ --dur:6.1s; animation-delay:-1.3s; }
+#productGrid article:nth-child(4n+3) .hang{ --dur:6.8s; animation-delay:-2.6s; }
+#productGrid article:nth-child(4n)   .hang{ --dur:7.5s; animation-delay:-3.9s; }
+
+/* ── VINTAGE PRINT FRAME ── */
+.print-frame{ background:#f8f1e2; border:1px solid #d8c6a4; box-shadow:0 14px 30px -10px rgba(64,36,18,.45), inset 0 0 0 6px #fff8ea, inset 0 0 40px rgba(122,74,42,.12); }
+
+/* ── TICKET STUB BUTTON ── */
+.ticket{
+  color:#F6EBD9;
+  background:
+    radial-gradient(circle at 0 50%, transparent 6px, #b4552d 6.8px) left/51% 100% no-repeat,
+    radial-gradient(circle at 100% 50%, transparent 6px, #b4552d 6.8px) right/51% 100% no-repeat;
+  filter: drop-shadow(0 4px 0 #7c3018);
+  transition: transform .2s, filter .2s;
+}
+.ticket:hover{ transform:translateY(-2px); filter: drop-shadow(0 6px 0 #7c3018); background:
+    radial-gradient(circle at 0 50%, transparent 6px, #93401f 6.8px) left/51% 100% no-repeat,
+    radial-gradient(circle at 100% 50%, transparent 6px, #93401f 6.8px) right/51% 100% no-repeat; }
+
+/* ── RETRO BITS ── */
+.sunburst{ background:repeating-conic-gradient(from 0deg at 50% 42%, rgba(244,234,216,.16) 0deg 7deg, transparent 7deg 14deg); }
+.scallop{ background:radial-gradient(circle at 50% 0, #5d3418 0 10px, transparent 11px) repeat-x; background-size:26px 22px; height:22px; }
+@keyframes marquee{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.marquee-track{ animation:marquee 30s linear infinite; }
+@keyframes spin-slow{ to{transform:rotate(360deg)} } .spin-slow{ animation:spin-slow 20s linear infinite; }
+@keyframes fadeIn{ from{opacity:0} to{opacity:1} }
+@keyframes popIn{ from{opacity:0; transform:scale(.94) translateY(16px)} to{opacity:1; transform:scale(1) translateY(0)} }
+@keyframes slideIn{ from{transform:translateX(100%)} to{transform:translateX(0)} }
+@keyframes slideOut{ from{transform:translateX(0)} to{transform:translateX(100%)} }
+@keyframes badgePop{ 0%{transform:scale(.4)} 60%{transform:scale(1.25)} 100%{transform:scale(1)} }
+.anim-fade{ animation:fadeIn .3s ease both; } .anim-pop{ animation:popIn .45s cubic-bezier(.22,1,.36,1) both; }
+.anim-slide{ animation:slideIn .45s cubic-bezier(.22,1,.36,1) both; } .anim-slide-out{ animation:slideOut .3s ease both; }
+.badge-pop{ animation:badgePop .35s cubic-bezier(.22,1,.36,1); }
+
+.reveal{ opacity:0; transform:translateY(26px); transition:opacity .8s ease, transform .8s cubic-bezier(.22,1,.36,1); }
+.reveal.revealed{ opacity:1; transform:translateY(0); }
+
+.grain{ position:fixed; inset:0; z-index:60; pointer-events:none; opacity:.06; mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+.dd-panel{ opacity:0; pointer-events:none; transform:translateY(10px) rotate(-1deg); transition:all .3s cubic-bezier(.22,1,.36,1); }
+.dd-panel.dd-open{ opacity:1; pointer-events:auto; transform:translateY(0) rotate(0deg); }
+.dd-item{ display:flex; width:100%; text-align:left; padding:.6rem .9rem; border-radius:.5rem; transition:background .2s; }
+.dd-item:hover{ background:rgba(180,85,45,.12); }
+
+.thin-scroll::-webkit-scrollbar{ width:5px; } .thin-scroll::-webkit-scrollbar-thumb{ background:#c9a876; border-radius:4px; }
+[hidden]{ display:none !important; }
+
+/* ── "JUST LANDED" STAMP (new-arrival cards, stamps in in as the card reveals) ── */
+.stamp-badge{
+  position:absolute; left:-12px; top:10px; z-index:20;
+  width:62px; height:62px; border-radius:9999px;
+  display:flex; align-items:center; justify-content:center; text-align:center;
+  background:radial-gradient(circle at 32% 28%, #c2632f, #93401f 70%);
+  border:2px dashed rgba(244,234,216,.8);
+  box-shadow:0 4px 10px rgba(64,36,18,.4);
+  transform:scale(0) rotate(-16deg); opacity:0;
+}
+.reveal.revealed .stamp-badge{ animation:stampDrop .5s cubic-bezier(.22,1,.36,1) .3s forwards; }
+@keyframes stampDrop{
+  0%{ transform:scale(0) rotate(-16deg); opacity:0; }
+  65%{ transform:scale(1.18) rotate(-13deg); opacity:1; }
+  100%{ transform:scale(1) rotate(-13deg); opacity:1; }
+}
+
+/* ── PAPER-SCRAP BURST (fires on "pop it in my basket") ── */
+.paper-bit{
+  position:fixed; z-index:300; width:9px; height:13px; pointer-events:none; border-radius:1px;
+  animation:paperFly .75s cubic-bezier(.22,1,.36,1) forwards;
+}
+@keyframes paperFly{
+  0%{ transform:translate(-50%,-50%) rotate(0deg) scale(1); opacity:1; }
+  100%{ transform:translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) rotate(var(--rot)) scale(.55); opacity:0; }
+}

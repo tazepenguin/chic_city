@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chic City — Nairobi's Best Imported Bags</title>
+<meta name="description" content="A wall of beautifully imported bags at Sawa Mall, Nairobi. Come find the one that feels like you at Chic City." />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Caveat:wght@500;700&family=Special+Elite&family=Karla:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
+
+<!-- Tailwind CDN + its external config (config must load synchronously right after the CDN) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="tailwind.config.js"></script>
+
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<!-- All styles, external -->
+<link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="font-sans text-cocoa overflow-x-hidden">
+<div class="grain"></div>
+
+<!-- Decorative flower sprite (drawn shapes, reused via <use> below) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="flower-pink" viewBox="0 0 100 100">
+    <g fill="#EC1E7F" stroke="#402412" stroke-width="3" stroke-linejoin="round">
+      <ellipse cx="50" cy="24" rx="15" ry="21"/>
+      <ellipse cx="50" cy="24" rx="15" ry="21" transform="rotate(60 50 50)"/>
+      <ellipse cx="50" cy="24" rx="15" ry="21" transform="rotate(120 50 50)"/>
+      <ellipse cx="50" cy="24" rx="15" ry="21" transform="rotate(180 50 50)"/>
+      <ellipse cx="50" cy="24" rx="15" ry="21" transform="rotate(240 50 50)"/>
+      <ellipse cx="50" cy="24" rx="15" ry="21" transform="rotate(300 50 50)"/>
+    </g>
+    <circle cx="50" cy="50" r="13" fill="#FCEE21" stroke="#402412" stroke-width="3"/>
+  </symbol>
+  <symbol id="flower-yellow" viewBox="0 0 100 100">
+    <g fill="#FCEE21" stroke="#402412" stroke-width="3" stroke-linejoin="round">
+      <ellipse cx="50" cy="24" rx="15" ry="21"/>
+      <ellipse cx="50" cy="24" rx="15" ry="21" transform="rotate(60 50 50)"/>
+      <ellipse cx="50" cy="24" rx="15" ry="21" transform="rotate(120 50 50)"/>
+      <ellipse cx="50" cy="24" rx="15" ry="21" transform="rotate(180 50 50)"/>
+      <ellipse cx="50" cy="24" rx="15" ry="21" transform="rotate(240 50 50)"/>
+      <ellipse cx="50" cy="24" rx="15" ry="21" transform="rotate(300 50 50)"/>
+    </g>
+    <circle cx="50" cy="50" r="13" fill="#EC1E7F" stroke="#402412" stroke-width="3"/>
+  </symbol>
+</svg>
+
+<!-- ═══════ WOODEN HEADER BAR ═══════ -->
+<header class="sticky top-0 z-40 wood wood-frame border-x-0 border-t-0">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 h-16 md:h-[4.5rem] flex items-center justify-between gap-3">
+    <div class="flex items-center">
+      <button id="menuBtn" class="lg:hidden painted font-type text-sm tracking-widest uppercase flex items-center gap-2 hover:text-mustard transition-colors">
+        <i data-lucide="menu" class="w-5 h-5"></i> menu
+      </button>
+      <nav class="hidden lg:flex items-center gap-1 font-type text-[13px] tracking-[0.18em] uppercase painted">
+        <div class="relative" data-dropdown>
+          <button data-dd-btn aria-expanded="false" class="flex items-center gap-1.5 px-4 py-2 hover:text-mustard transition-colors">shop <i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+          <div data-dd-panel class="dd-panel absolute left-0 top-full mt-3 w-60 kraft pin rounded-md p-2 normal-case tracking-normal">
+            <button class="dd-item font-type text-sm" data-filter-type="category" data-filter-value="All">everything on the wall</button>
+            <button class="dd-item font-type text-sm" data-filter-type="category" data-filter-value="Totes">totes</button>
+            <button class="dd-item font-type text-sm" data-filter-type="category" data-filter-value="Crossbody">crossbody</button>
+            <button class="dd-item font-type text-sm" data-filter-type="category" data-filter-value="Clutches">clutches</button>
+            <button class="dd-item font-type text-sm" data-filter-type="category" data-filter-value="Backpacks">backpacks</button>
+          </div>
+        </div>
+        <div class="relative" data-dropdown>
+          <button data-dd-btn aria-expanded="false" class="flex items-center gap-1.5 px-4 py-2 hover:text-mustard transition-colors">collections <i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+          <div data-dd-panel class="dd-panel absolute left-0 top-full mt-3 w-72 kraft pin rounded-md p-2 normal-case tracking-normal">
+            <button class="dd-item" data-filter-type="collection" data-filter-value="New Arrivals"><span><span class="block font-type text-sm">new arrivals</span><span class="block font-hand text-lg text-rust leading-none">just landed!</span></span></button>
+            <button class="dd-item" data-filter-type="collection" data-filter-value="Everyday Essentials"><span><span class="block font-type text-sm">everyday essentials</span><span class="block font-hand text-lg text-rust leading-none">your daily sidekicks</span></span></button>
+            <button class="dd-item" data-filter-type="collection" data-filter-value="Work &amp; Travel"><span><span class="block font-type text-sm">work &amp; travel</span><span class="block font-hand text-lg text-rust leading-none">for trains &amp; adventures</span></span></button>
+            <button class="dd-item" data-filter-type="collection" data-filter-value="Evening Wear"><span><span class="block font-type text-sm">evening wear</span><span class="block font-hand text-lg text-rust leading-none">for nights to remember</span></span></button>
+          </div>
+        </div>
+        <a href="#story" class="px-4 py-2 hover:text-mustard transition-colors">our story</a>
+      </nav>
+    </div>
+
+    <a href="#top" class="absolute left-1/2 -translate-x-1/2 painted font-display font-black text-xl md:text-2xl tracking-wide">Chic <span class="font-hand italic text-mustard text-2xl md:text-3xl">City</span></a>
+
+    <button id="cartBtn" class="relative painted font-type text-sm tracking-widest uppercase flex items-center gap-2 hover:text-mustard transition-colors">
+      <i data-lucide="shopping-basket" class="w-5 h-5"></i> basket
+      <span id="cartCount" hidden class="absolute -top-2 -right-4 min-w-[18px] px-1 h-[18px] rounded-full bg-mustard text-wooddeep text-[11px] font-bold font-sans flex items-center justify-center">0</span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ═══════ THE NOTICE BOARD HERO ═══════ -->
+<section class="px-3 md:px-6 pt-8 md:pt-12">
+  <div class="wood wood-frame rounded-2xl max-w-7xl mx-auto relative overflow-hidden">
+    <span class="nail absolute top-4 left-4"></span><span class="nail absolute top-4 right-4"></span>
+    <span class="nail absolute bottom-4 left-4"></span><span class="nail absolute bottom-4 right-4"></span>
+    <svg class="w-9 h-9 absolute top-10 right-12 rotate-[8deg] hidden md:block pointer-events-none"><use href="#flower-pink"/></svg>
+
+    <div class="grid lg:grid-cols-12 gap-8 px-6 md:px-12 py-14 md:py-16 relative">
+      <div class="lg:col-span-7 relative z-10">
+        <p class="font-type text-mustard text-sm tracking-[0.3em] uppercase mb-6">✦ sawa mall, nairobi · est. 2016 ✦</p>
+        <h1 class="painted font-display font-black text-5xl md:text-7xl lg:text-[5.4rem] leading-[0.95] mb-6">
+          well hello,<br/>friend. come<br/>on in.
+        </h1>
+        <p class="painted/90 text-cream/85 font-sans font-light text-lg md:text-xl max-w-xl leading-relaxed mb-10">
+          every bag on this wall is hand-picked and imported for quality you can feel the moment you touch it.
+          take your time browsing… <em class="font-hand text-2xl not-italic font-bold text-mustard">the right one will wave at you.</em>
+        </p>
+        <div class="flex flex-wrap items-center gap-6">
+          <a href="#collection" class="ticket font-type text-sm tracking-[0.2em] uppercase px-9 py-4 inline-flex items-center gap-3">
+            show me the bags <i data-lucide="arrow-down" class="w-4 h-4"></i>
+          </a>
+          <span class="font-hand text-2xl text-cream/80 rotate-[-2deg]">or say hi on WhatsApp — we don't bite! ☺</span>
+        </div>
+
+        <div class="kraft pin hidden md:block absolute right-0 top-2 w-52 p-4 rotate-[3deg] hover:rotate-0 transition-transform duration-300">
+          <p class="font-hand text-2xl leading-snug text-cocoa">psst… tap any bag to read its little story ↓</p>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 relative flex justify-center push">
+        <div class="sunburst absolute inset-0 pointer-events-none"></div>
+        <div class="relative w-64 md:w-80 mt-2">
+          <span class="nail absolute left-1/2 -translate-x-1/2 -top-2 z-20"></span>
+          <div class="hang hang-hero">
+            <svg viewBox="0 0 200 74" class="w-[72%] mx-auto block -mb-3 relative z-10"><path d="M28 74 C 40 6, 160 6, 172 74" fill="none" stroke="#402412" stroke-width="8" stroke-linecap="round"/></svg>
+            <div class="print-frame rounded-md p-3 pb-4 rotate-[1deg]">
+              <div class="overflow-hidden rounded-sm aspect-[4/5]">
+                <img id="heroBag" src="hero-bag.png" alt="the farfalla — woven ivory leather, brass butterfly"
+                     data-fallback="https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=900&q=80"
+                     class="w-full h-full object-cover" />
+              </div>
+              <p class="font-hand text-2xl text-center text-cocoa/80 mt-2">the farfalla · nº 00</p>
+            </div>
+            <div class="kraft absolute -right-8 top-24 w-24 p-3 rotate-[8deg] rounded-sm">
+              <p class="font-type text-lg text-center leading-none">Ksh 4,800</p>
+              <p class="font-hand text-base text-center text-rust leading-tight">customer favourite!</p>
+            </div>
+          </div>
+        </div>
+        <div class="absolute -bottom-4 left-2 w-28 h-28 spin-slow text-cream/80 pointer-events-none">
+          <svg viewBox="0 0 100 100" class="w-full h-full">
+            <defs><path id="circ" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" /></defs>
+            <text font-size="8" letter-spacing="2.4" fill="currentColor" font-family="Special Elite"><textPath href="#circ">IMPORTED WITH CARE • TRUSTED QUALITY •</textPath></text>
+            <circle cx="50" cy="50" r="4" fill="#D9A13B" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scallop max-w-7xl mx-auto"></div>
+</section>
+
+<!-- ═══════ MARQUEE ═══════ -->
+<div class="border-y-2 border-dashed border-wood/40 py-4 overflow-hidden bg-paper/70 my-10">
+  <div class="marquee-track flex whitespace-nowrap w-max">
+    <span class="font-hand text-2xl text-rust px-5">imported with care</span><span class="text-mustard text-xl">❋</span>
+    <span class="font-hand text-2xl text-olive px-5">genuine quality leather</span><span class="text-mustard text-xl">❋</span>
+    <span class="font-hand text-2xl text-rust px-5">hand-picked, every time</span><span class="text-mustard text-xl">❋</span>
+    <span class="font-hand text-2xl text-olive px-5">the best bags in nairobi</span><span class="text-mustard text-xl">❋</span>
+    <span class="font-hand text-2xl text-rust px-5">imported with care</span><span class="text-mustard text-xl">❋</span>
+    <span class="font-hand text-2xl text-olive px-5">genuine quality leather</span><span class="text-mustard text-xl">❋</span>
+    <span class="font-hand text-2xl text-rust px-5">hand-picked, every time</span><span class="text-mustard text-xl">❋</span>
+    <span class="font-hand text-2xl text-olive px-5">the best bags in nairobi</span><span class="text-mustard text-xl">❋</span>
+  </div>
+</div>
+
+<!-- ═══════ THE HANGING WALL ═══════ -->
+<section id="collection" class="scroll-mt-28 max-w-7xl mx-auto px-6 lg:px-10 pb-28">
+  <div class="flex flex-wrap items-end justify-between gap-8 mb-16 reveal">
+    <div class="plank px-8 py-6 rotate-[-1.2deg]">
+      <p class="font-type text-mustard text-xs tracking-[0.3em] uppercase mb-2">the hanging wall · autumn '26</p>
+      <h2 class="painted font-display font-black text-4xl md:text-5xl leading-tight">pick the one that<br/>feels like <span class="font-hand italic text-mustard text-5xl md:text-6xl">you</span></h2>
+    </div>
+    <p class="max-w-xs font-hand text-2xl text-cocoa/80 leading-snug rotate-[1deg]">
+      go on, give them a little sway — they do love showing off ☺
+    </p>
+  </div>
+
+  <div class="mb-20 reveal">
+    <p class="font-type text-mustard text-xs tracking-[0.3em] uppercase mb-6 flex items-center gap-2">
+      <svg class="w-5 h-5 -rotate-6"><use href="#flower-yellow"/></svg> shop by category
+    </p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-14">
+      <button data-filter-type="category" data-filter-value="Totes" class="push relative block w-full text-left">
+        <span class="nail absolute left-1/2 -translate-x-1/2 -top-3 z-20"></span>
+        <div class="hang hang-cat-a">
+          <div class="print-frame rounded-md p-2.5 pb-3 rotate-[-1.5deg]">
+            <div class="overflow-hidden rounded-sm aspect-square">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=500&q=80" alt="totes"
+                   data-fallback="https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=500&q=80"
+                   class="w-full h-full object-cover" />
+            </div>
+            <p class="font-hand text-xl text-center text-cocoa/80 mt-1.5">totes</p>
+          </div>
+        </div>
+      </button>
+      <button data-filter-type="category" data-filter-value="Crossbody" class="push relative block w-full text-left">
+        <span class="nail absolute left-1/2 -translate-x-1/2 -top-3 z-20"></span>
+        <div class="hang hang-cat-b">
+          <div class="print-frame rounded-md p-2.5 pb-3 rotate-[1.5deg]">
+            <div class="overflow-hidden rounded-sm aspect-square">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=500&q=80" alt="crossbody"
+                   data-fallback="https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=500&q=80"
+                   class="w-full h-full object-cover" />
+            </div>
+            <p class="font-hand text-xl text-center text-cocoa/80 mt-1.5">crossbody</p>
+          </div>
+        </div>
+      </button>
+      <button data-filter-type="category" data-filter-value="Clutches" class="push relative block w-full text-left">
+        <span class="nail absolute left-1/2 -translate-x-1/2 -top-3 z-20"></span>
+        <div class="hang hang-cat-c">
+          <div class="print-frame rounded-md p-2.5 pb-3 rotate-[-2deg]">
+            <div class="overflow-hidden rounded-sm aspect-square">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&w=500&q=80" alt="clutches"
+                   data-fallback="https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=500&q=80"
+                   class="w-full h-full object-cover" />
+            </div>
+            <p class="font-hand text-xl text-center text-cocoa/80 mt-1.5">clutches</p>
+          </div>
+        </div>
+      </button>
+      <button data-filter-type="category" data-filter-value="Backpacks" class="push relative block w-full text-left">
+        <span class="nail absolute left-1/2 -translate-x-1/2 -top-3 z-20"></span>
+        <div class="hang hang-cat-d">
+          <div class="print-frame rounded-md p-2.5 pb-3 rotate-[2deg]">
+            <div class="overflow-hidden rounded-sm aspect-square">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=500&q=80" alt="backpacks"
+                   data-fallback="https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=500&q=80"
+                   class="w-full h-full object-cover" />
+            </div>
+            <p class="font-hand text-xl text-center text-cocoa/80 mt-1.5">backpacks</p>
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <div id="filterChip" hidden class="mb-12 inline-flex items-center gap-3 kraft pin rounded-md pl-6 pr-2 py-2.5 anim-fade">
+    <span class="font-type text-xs tracking-[0.2em] uppercase text-cocoa/60">now showing:</span>
+    <span id="filterLabel" class="font-hand text-2xl text-rust leading-none"></span>
+    <button id="clearFilter" class="w-8 h-8 rounded-full bg-rust text-cream flex items-center justify-center hover:bg-rustdark transition-colors" aria-label="clear filter"><i data-lucide="x" class="w-4 h-4"></i></button>
+  </div>
+
+  <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 lg:gap-x-8 gap-y-24 items-start"></div>
+</section>
+
+<!-- ═══════ RETRO CAMPAIGN BAND ═══════ -->
+<section class="relative bg-rust overflow-hidden">
+  <div class="sunburst absolute inset-0"></div>
+  <svg class="w-12 h-12 absolute top-8 left-6 md:left-10 rotate-[-10deg] pointer-events-none"><use href="#flower-yellow"/></svg>
+  <svg class="w-8 h-8 absolute bottom-10 left-1/3 rotate-[14deg] hidden md:block pointer-events-none"><use href="#flower-pink"/></svg>
+  <div class="max-w-7xl mx-auto px-6 py-20 md:py-24 grid md:grid-cols-2 gap-12 items-center relative">
+    <div class="reveal">
+      <p class="font-type text-cream/80 text-sm tracking-[0.3em] uppercase mb-4">✦ a friendly reminder from chic city ✦</p>
+      <h2 class="font-display font-black italic text-5xl md:text-7xl leading-[0.95] text-cream [text-shadow:4px_4px_0_#D9A13B] mb-6">the best,<br/>for nairobi.</h2>
+      <p class="text-cream/90 font-light text-lg max-w-md leading-relaxed mb-8">
+        no knockoffs, no shortcuts — just carefully sourced bags, checked for quality, and brought home to Nairobi for you.
+      </p>
+      <a id="campaignWA" href="#" target="_blank" rel="noopener noreferrer" class="ticket font-type text-sm tracking-[0.2em] uppercase px-9 py-4 inline-flex items-center gap-3">
+        <i data-lucide="message-circle" class="w-4 h-4"></i> get yours before autumn ends
+      </a>
+    </div>
+    <div class="relative flex justify-center push reveal">
+      <span class="nail absolute left-1/2 -translate-x-1/2 top-0 z-20"></span>
+      <div class="hang hang-campaign w-60 md:w-72">
+        <svg viewBox="0 0 200 74" class="w-[72%] mx-auto block -mb-3 relative z-10"><path d="M28 74 C 40 6, 160 6, 172 74" fill="none" stroke="#402412" stroke-width="8" stroke-linecap="round"/></svg>
+        <div class="print-frame rounded-md p-3 pb-4">
+          <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=700&q=80" alt="the argile in madder red"
+               data-fallback="https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=700&q=80"
+               class="w-full aspect-square object-cover rounded-sm" />
+          <p class="font-hand text-2xl text-center text-cocoa/80 mt-2">the argile · Ksh 2,900</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ OUR STORY BOARD ═══════ -->
+<section id="story" class="scroll-mt-28 px-3 md:px-6 py-16">
+  <div class="wood wood-frame rounded-2xl max-w-7xl mx-auto relative">
+    <span class="nail absolute top-4 left-4"></span><span class="nail absolute top-4 right-4"></span>
+    <div class="grid lg:grid-cols-12 gap-12 px-6 md:px-12 py-16">
+      <div class="lg:col-span-6 reveal">
+        <p class="font-type text-mustard text-sm tracking-[0.3em] uppercase mb-5 flex items-center gap-2">
+          <svg class="w-5 h-5 rotate-[10deg]"><use href="#flower-pink"/></svg> our story · pinned to the board
+        </p>
+        <h2 class="painted font-display font-black text-4xl md:text-6xl leading-tight mb-8">one wall,<br/>the best bags we could find,<br/><span class="font-hand italic text-mustard text-5xl md:text-7xl">brought home to nairobi.</span></h2>
+        <p class="text-cream/85 font-light leading-relaxed mb-5 max-w-lg">
+          Chic City started in 2016 with one simple idea: <em>Nairobi deserves easy access to genuinely good bags.</em>
+          we don't make them ourselves — we search them out, test them for quality, and bring only the best ones home to the wall.
+        </p>
+        <p class="text-cream/85 font-light leading-relaxed max-w-lg">
+          every piece is checked by hand before it goes up — stitching, hardware, material, all of it — so what you see is exactly what you get.
+          got a question about a piece before you buy? we're always one WhatsApp message away.
+        </p>
+        <blockquote class="kraft pin mt-10 max-w-md p-6 rotate-[-1.5deg]">
+          <p class="font-hand text-3xl leading-snug text-cocoa">"we don't chase every trend. we chase quality — then bring it home to nairobi."</p>
+          <cite class="not-italic font-type text-xs tracking-[0.25em] uppercase text-cocoa/60 mt-3 block">— chic city, sawa mall</cite>
+        </blockquote>
+      </div>
+      <div class="lg:col-span-6 grid grid-cols-2 gap-6 items-start reveal">
+        <div class="push relative mt-10"><span class="nail absolute left-1/2 -translate-x-1/2 -top-3 z-20"></span>
+          <div class="hang hang-story-a"><div class="print-frame rounded-md p-3 pb-3 rotate-[-2deg]">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80" alt="close-up of leather stitching detail"
+                 data-fallback="https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=600&q=80"
+                 class="w-full aspect-[4/5] object-cover rounded-sm" />
+            <p class="font-hand text-xl text-center text-cocoa/80 mt-2">stitching worth a closer look</p>
+          </div></div>
+        </div>
+        <div class="push relative"><span class="nail absolute left-1/2 -translate-x-1/2 -top-3 z-20"></span>
+          <div class="hang hang-story-b"><div class="print-frame rounded-md p-3 pb-3 rotate-[2deg]">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=600&q=80" alt="close-up of genuine leather texture"
+                 data-fallback="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80"
+                 class="w-full aspect-[4/5] object-cover rounded-sm" />
+            <p class="font-hand text-xl text-center text-cocoa/80 mt-2">genuine leather, up close</p>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scallop max-w-7xl mx-auto"></div>
+</section>
+</main>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="wood wood-frame border-x-0 border-b-0 mt-4">
+  <div class="max-w-7xl mx-auto px-6 py-14 text-center">
+    <p class="painted font-display font-black text-3xl md:text-4xl mb-3">visit us at sawa mall — we're always happy to help you find the one.</p>
+    <p class="font-hand text-2xl text-mustard mb-6">chic city · sawa mall, nairobi · +254 769 338 054</p>
+    <div class="flex items-center justify-center gap-4 mb-7">
+      <svg class="w-7 h-7 -rotate-12 hidden sm:block"><use href="#flower-pink"/></svg>
+      <a href="https://wa.me/254769338054?text=Hello%20Chic%20City%2C%20I%20have%20a%20question%20about%20your%20bags" target="_blank" rel="noopener noreferrer" aria-label="Chat with Chic City on WhatsApp" class="w-10 h-10 rounded-full bg-cream/10 text-cream flex items-center justify-center hover:bg-mustard hover:text-cocoa transition-colors">
+        <i data-lucide="message-circle" class="w-5 h-5"></i>
+      </a>
+      <a href="https://www.instagram.com/chic_.city" target="_blank" rel="noopener noreferrer" aria-label="Chic City on Instagram" class="w-10 h-10 rounded-full bg-cream/10 text-cream flex items-center justify-center hover:bg-mustard hover:text-cocoa transition-colors">
+        <i data-lucide="instagram" class="w-5 h-5"></i>
+      </a>
+      <a href="https://www.tiktok.com/@chic_.city" target="_blank" rel="noopener noreferrer" aria-label="Chic City on TikTok" class="w-10 h-10 rounded-full bg-cream/10 text-cream flex items-center justify-center hover:bg-mustard hover:text-cocoa transition-colors">
+        <i data-lucide="music" class="w-5 h-5"></i>
+      </a>
+      <svg class="w-7 h-7 rotate-12 hidden sm:block"><use href="#flower-yellow"/></svg>
+    </div>
+    <p class="font-type text-[11px] tracking-[0.3em] uppercase text-cream/60">© 2026 chic city · nairobi's finest imported bags</p>
+  </div>
+</footer>
+
+<!-- ═══════ MOBILE MENU ═══════ -->
+<div id="mobileMenu" hidden class="fixed inset-0 z-[70] wood overflow-y-auto thin-scroll anim-fade">
+  <div class="p-5 flex items-center justify-between">
+    <span class="painted font-display font-black text-xl">Chic City</span>
+    <button id="menuClose" class="painted p-2 hover:text-mustard" aria-label="close menu"><i data-lucide="x" class="w-6 h-6"></i></button>
+  </div>
+  <div class="px-8 pb-24 pt-4 space-y-10">
+    <div>
+      <p class="font-type text-mustard text-xs tracking-[0.3em] uppercase mb-4">the shop</p>
+      <div class="space-y-2">
+        <button class="block painted font-display font-black text-4xl hover:text-mustard transition-colors" data-filter-type="category" data-filter-value="All">everything</button>
+        <button class="block painted font-display font-black text-4xl hover:text-mustard transition-colors" data-filter-type="category" data-filter-value="Totes">totes</button>
+        <button class="block painted font-display font-black text-4xl hover:text-mustard transition-colors" data-filter-type="category" data-filter-value="Crossbody">crossbody</button>
+        <button class="block painted font-display font-black text-4xl hover:text-mustard transition-colors" data-filter-type="category" data-filter-value="Clutches">clutches</button>
+        <button class="block painted font-display font-black text-4xl hover:text-mustard transition-colors" data-filter-type="category" data-filter-value="Backpacks">backpacks</button>
+      </div>
+    </div>
+    <div>
+      <p class="font-type text-mustard text-xs tracking-[0.3em] uppercase mb-4">collections</p>
+      <div class="space-y-2">
+        <button class="block painted font-hand text-3xl hover:text-mustard transition-colors" data-filter-type="collection" data-filter-value="New Arrivals">new arrivals — just landed!</button>
+        <button class="block painted font-hand text-3xl hover:text-mustard transition-colors" data-filter-type="collection" data-filter-value="Everyday Essentials">everyday essentials</button>
+        <button class="block painted font-hand text-3xl hover:text-mustard transition-colors" data-filter-type="collection" data-filter-value="Work &amp; Travel">work &amp; travel</button>
+        <button class="block painted font-hand text-3xl hover:text-mustard transition-colors" data-filter-type="collection" data-filter-value="Evening Wear">evening wear</button>
+      </div>
+    </div>
+    <a href="#story" class="block painted font-display font-black text-3xl border-t-2 border-dashed border-cream/25 pt-8 hover:text-mustard transition-colors" data-close-menu>our story</a>
+  </div>
+</div>
+
+<!-- ═══════ PRODUCT MODAL ═══════ -->
+<div id="modalBackdrop" hidden class="fixed inset-0 z-[80] bg-wooddeep/60 backdrop-blur-[2px] anim-fade"></div>
+<div id="productModal" hidden class="fixed inset-0 z-[80] flex items-center justify-center p-4 md:p-8 pointer-events-none">
+  <div class="anim-pop pointer-events-auto relative w-full max-w-5xl max-h-[92vh] overflow-y-auto thin-scroll bg-paper rounded-xl shadow-2xl border-4 border-wooddark grid md:grid-cols-2">
+    <button id="modalClose" aria-label="close" class="absolute top-4 right-4 z-20 w-11 h-11 rounded-full bg-wood text-cream flex items-center justify-center hover:bg-rust transition-colors shadow-lg"><i data-lucide="x" class="w-5 h-5"></i></button>
+
+    <div class="relative bg-cream/60 rounded-t-lg md:rounded-l-lg md:rounded-tr-none p-8 flex justify-center overflow-hidden">
+      <div class="sunburst absolute inset-0 opacity-60"></div>
+      <div class="push relative w-60 md:w-72 mt-6">
+        <span class="nail absolute left-1/2 -translate-x-1/2 -top-3 z-20"></span>
+        <div class="hang hang-modal">
+          <svg viewBox="0 0 200 74" class="w-[72%] mx-auto block -mb-3 relative z-10"><path d="M28 74 C 40 6, 160 6, 172 74" fill="none" stroke="#402412" stroke-width="8" stroke-linecap="round"/></svg>
+          <div id="mZoomWrap" class="print-frame rounded-md p-3 pb-4 cursor-zoom-in overflow-hidden">
+            <img id="mImage" src="" alt="" data-fallback="https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=900&q=80" class="w-full aspect-[4/5] object-cover rounded-sm transition-transform duration-300 ease-out" />
+            <p id="mCaption" class="font-hand text-2xl text-center text-cocoa/80 mt-2"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-8 md:p-10 flex flex-col">
+      <p id="mNo" class="font-type text-rust text-xs tracking-[0.3em] uppercase mb-2"></p>
+      <h3 id="mName" class="font-display font-black text-4xl md:text-5xl leading-tight mb-2"></h3>
+      <p id="mBlurb" class="font-hand text-2xl text-rust leading-snug mb-5"></p>
+      <p id="mNarrative" class="text-cocoa/80 font-light leading-relaxed mb-7"></p>
+
+      <div class="border-t-2 border-dashed border-wood/30 pt-5 mb-7">
+        <p class="font-type text-xs tracking-[0.25em] uppercase text-cocoa/60 mb-1">what it's made of</p>
+        <p id="mMaterial" class="font-type text-base"></p>
+        <ul class="mt-3 space-y-1 font-hand text-xl text-cocoa/80">
+          <li>✓ inspected for quality before it hits the wall</li>
+          <li>✓ genuine materials, every time</li>
+          <li>✓ ready for pickup or delivery, fast</li>
+        </ul>
+      </div>
+
+      <div class="mb-7">
+        <p class="font-type text-xs tracking-[0.25em] uppercase text-cocoa/60 mb-3">pick a colour — <span id="mColorName" class="font-hand text-xl text-rust normal-case tracking-normal"></span></p>
+        <div id="mSwatches" class="flex gap-3"></div>
+      </div>
+
+      <div class="mt-auto pt-5 border-t-2 border-dashed border-wood/30">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+          <p id="mPrice" class="font-display font-black text-3xl text-rust"></p>
+          <div class="flex items-center gap-3 border-2 border-wood/40 rounded-full px-3 py-1.5">
+            <button id="qtyMinus" class="hover:text-rust" aria-label="less"><i data-lucide="minus" class="w-4 h-4"></i></button>
+            <span id="mQty" class="w-5 text-center font-type text-sm">1</span>
+            <button id="qtyPlus" class="hover:text-rust" aria-label="more"><i data-lucide="plus" class="w-4 h-4"></i></button>
+          </div>
+          <button id="addOrderBtn" class="ticket font-type text-sm tracking-[0.18em] uppercase px-7 py-3.5 inline-flex items-center gap-2">
+            <i data-lucide="shopping-basket" class="w-4 h-4"></i> pop it in my basket
+          </button>
+        </div>
+        <a id="mWaLink" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-hand text-xl text-rust border-b-2 border-dashed border-rust/50 pb-0.5 hover:text-rustdark transition-colors">
+          <i data-lucide="message-circle" class="w-4 h-4"></i> or just whisper us on WhatsApp ♡
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ BASKET DRAWER ═══════ -->
+<div id="drawerBackdrop" hidden class="fixed inset-0 z-[80] bg-wooddeep/60 backdrop-blur-[2px] anim-fade"></div>
+<aside id="cartDrawer" hidden class="fixed top-0 right-0 z-[85] h-full w-full max-w-md kraft border-l-4 border-wooddark shadow-2xl flex flex-col">
+  <div class="flex items-center justify-between px-7 py-5 border-b-2 border-dashed border-wood/40">
+    <div><p class="font-type text-xs tracking-[0.3em] uppercase text-cocoa/60">chic city</p><h3 class="font-display font-black text-2xl">your little basket</h3></div>
+    <button id="drawerClose" aria-label="close basket" class="w-10 h-10 rounded-full bg-wood text-cream flex items-center justify-center hover:bg-rust transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
+  </div>
+  <div id="drawerItems" class="flex-1 overflow-y-auto thin-scroll px-7 py-6 space-y-5"></div>
+  <div id="drawerFooter" class="px-7 py-6 border-t-2 border-dashed border-wood/40 bg-paper/70">
+    <div class="flex justify-between items-baseline mb-1">
+      <span class="font-type text-xs tracking-[0.25em] uppercase text-cocoa/60">all together</span>
+      <span id="drawerTotal" class="font-display font-black text-3xl text-rust"></span>
+    </div>
+    <p class="font-hand text-xl text-cocoa/75 mb-4">we'll reply within a day — probably with a photo of your bag, ready and waiting ♡</p>
+    <a id="waCheckout" href="#" target="_blank" rel="noopener noreferrer" class="ticket w-full inline-flex items-center justify-center gap-3 font-type text-sm tracking-[0.18em] uppercase px-8 py-4">
+      <i data-lucide="message-circle" class="w-5 h-5"></i> send my order on WhatsApp
+    </a>
+  </div>
+</aside>
+
+<!-- All logic, external -->
+<script src="script.js" defer></script>
+</body>
+</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
